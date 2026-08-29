@@ -142,3 +142,4 @@ with col2:
 st.caption(
     "Model: K-Nearest Neighbors (KNN)"
 )
+st.caption("Built by Vijay Saroj")
