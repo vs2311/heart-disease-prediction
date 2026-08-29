@@ -8,6 +8,10 @@ Multiple classification models were trained and evaluated, and K-Nearest Neighbo
 
 The trained model is integrated with a Streamlit web application that allows users to enter patient information and receive a prediction.
 
+## Live Demo
+
+[🚀 Try the Heart Disease Prediction App](https://heart-disease-prediction-y9i9zwzkpcsxuezzhwk73.streamlit.app/)
+
 ## Dataset
 
 The dataset contains 918 patient records with 11 input features and 1 target variable.
