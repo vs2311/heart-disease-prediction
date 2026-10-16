@@ -10,6 +10,17 @@ Five classification models were trained and compared. **K-Nearest Neighbors (KNN
 
 ---
 
+## 📸 Screenshots
+
+| Data Insights | Heart Disease Prediction |
+|---|---|
+| ![Data Insights](screenshots/Data-insights.png) | ![Prediction](screenshots/Prediction.png) |
+
+| Similar Patients | What-If Explorer |
+|---|---|
+| ![Similar Patients](screenshots/Similar-patients.png) | ![What-If Explorer](screenshots/What-if-explorer.png) |
+
+
 ## ✨ App Features
 
 | Feature | Description |
