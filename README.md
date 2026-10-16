@@ -1,107 +1,138 @@
-# Heart Disease Prediction using Machine Learning
+# ❤️ Heart Disease Risk Prediction
 
-## Project Overview
+An end-to-end machine learning project that predicts the risk of heart disease from clinical data, deployed as an interactive Streamlit web app.
 
-This project predicts the risk of heart disease using machine learning.
+Five classification models were trained and compared. **K-Nearest Neighbors (KNN)** was selected for its performance and is explained inside the app through similar-patient lookups, what-if curves and dataset comparisons.
 
-Multiple classification models were trained and evaluated, and K-Nearest Neighbors (KNN) was selected based on its performance.
+### 🚀 [Live Demo: Try the App](https://heart-disease-prediction-y9i9zwzkxpcsxuezzhwk73.streamlit.app/)
 
-The trained model is integrated with a Streamlit web application that allows users to enter patient information and receive a prediction.
+> ⚠️ **Disclaimer:** This project is for educational and demonstration purposes only. It is not a medical diagnosis tool.
 
-## Live Demo
-[🚀 Try the Heart Disease Prediction App](https://heart-disease-prediction-y9i9zwzkxpcsxuezzhwk73.streamlit.app/)
+---
 
+## ✨ App Features
 
-## Dataset
+| Feature | Description |
+|---|---|
+| **Live prediction** | Risk updates in real time as patient values change. |
+| **Risk gauge** | Shows a risk score, the share of nearest neighbours voting "heart disease". |
+| **Risk markers** | Highlights common clinical warning signs in the entered profile. |
+| **Patient vs. population radar** | Compares the patient with the average healthy and heart-disease patient. |
+| **What-If Explorer** | Shows how risk changes when one feature (age, cholesterol, max heart rate, etc.) is varied. |
+| **Similar Patients** | Lists the closest patients from the dataset and their outcomes, which explains the KNN decision. |
+| **Data Insights** | Feature distributions, class balance and correlation heatmap. |
+| **Presets & report** | One-click example patients and a downloadable text report. |
 
-The dataset contains 918 patient records with 11 input features and 1 target variable.
+---
 
-### Features
+## 📊 Dataset
 
-- Age
-- Sex
-- Chest Pain Type
-- Resting Blood Pressure
-- Cholesterol
-- Fasting Blood Sugar
-- Resting ECG
-- Maximum Heart Rate
-- Exercise-Induced Angina
-- Oldpeak
-- ST Slope
+918 patient records, 11 input features and 1 target variable.
 
-### Target
+**Features**
 
-`HeartDisease`
+| Feature | Description |
+|---|---|
+| `Age` | Age of the patient |
+| `Sex` | M / F |
+| `ChestPainType` | ATA (atypical angina), NAP (non-anginal pain), TA (typical angina), ASY (asymptomatic) |
+| `RestingBP` | Resting blood pressure (mm Hg) |
+| `Cholesterol` | Serum cholesterol (mg/dL) |
+| `FastingBS` | Fasting blood sugar > 120 mg/dL (1 = yes, 0 = no) |
+| `RestingECG` | Normal, ST, LVH |
+| `MaxHR` | Maximum heart rate achieved |
+| `ExerciseAngina` | Exercise-induced angina (Y / N) |
+| `Oldpeak` | ST depression induced by exercise |
+| `ST_Slope` | Slope of the peak-exercise ST segment (Up / Flat / Down) |
 
-- `0` = Lower risk
-- `1` = Higher risk
+**Target:** `HeartDisease`, where `0` = lower risk and `1` = higher risk.
 
-## Machine Learning Models
+---
 
-The following classification models were compared:
+## 🤖 Machine Learning Pipeline
 
-- Logistic Regression
-- K-Nearest Neighbors (KNN)
-- Naive Bayes
-- Decision Tree
-- Support Vector Machine (SVM)
+1. **Preprocessing:** one-hot encoding of categorical features and feature scaling (essential for distance-based models such as KNN).
+2. **Model training:** five classifiers trained and compared.
+3. **Evaluation:** accuracy, F1 score, precision, recall and confusion matrix.
+4. **Model selection:** KNN chosen as the best performer.
+5. **Deployment:** model, scaler and column order saved with Joblib and served through Streamlit.
 
-## Model Performance
+### Model Comparison
 
 | Model | Accuracy | F1 Score |
 |---|---:|---:|
 | Logistic Regression | 87.50% | 88.78% |
-| KNN | 88.59% | 89.86% |
+| **KNN (selected)** | **88.59%** | **89.86%** |
 | Naive Bayes | 86.96% | 87.88% |
 | Decision Tree | 77.22% | 79.40% |
 | SVM | 86.41% | 88.04% |
 
-### Selected Model
+### Selected Model: K-Nearest Neighbors
 
-**K-Nearest Neighbors (KNN)**
+- **Accuracy:** 88.59%
+- **F1 Score:** 89.86%
 
-- Accuracy: **88.59%**
-- F1 Score: **89.86%**
+---
 
-## Model Evaluation
+## 🛠️ Technologies Used
 
-The KNN model was further evaluated using:
+- **Language:** Python
+- **Data & ML:** Pandas, NumPy, Scikit-learn, Joblib
+- **Visualization:** Matplotlib, Seaborn, Plotly
+- **Web app:** Streamlit
+- **Notebook:** Jupyter Notebook
 
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
+---
 
-## Streamlit Application
-
-The trained KNN model is integrated into a Streamlit application.
-
-Users can enter patient information such as age, blood pressure, cholesterol, maximum heart rate, chest pain type, and other clinical features.
-
-The application then predicts the risk of heart disease.
-
-## Technologies Used
-
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- Joblib
-- Streamlit
-- Jupyter Notebook
-
-## Project Structure
+## 📁 Project Structure
 
 ```text
 Heart-Disease-Prediction/
 │
-├── HeartdiseaseFinal.ipynb
-├── app.py
-├── heart.csv
-├── requirements.txt
-├── heart_columns.pkl
-├── heart_scaler.pkl
-└── knn_heart_model.pkl
+├── HeartdiseaseFinal.ipynb   # Data analysis, model training & evaluation
+├── app.py                    # Streamlit web application
+├── heart.csv                 # Dataset
+├── requirements.txt          # Python dependencies
+├── heart_columns.pkl         # Feature column order used in training
+├── heart_scaler.pkl          # Fitted scaler
+└── knn_heart_model.pkl       # Trained KNN model
+```
+
+---
+
+## ▶️ Run Locally
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/vs2311/heart-disease-prediction.git
+cd heart-disease-prediction
+
+# 2. (Optional) create a virtual environment
+python -m venv venv
+source venv/bin/activate      # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Launch the app
+streamlit run app.py
+```
+
+The app opens at `http://localhost:8501`.
+
+---
+
+## 🔮 Future Improvements
+
+- Hyperparameter tuning with cross-validation
+- Probability calibration for more reliable risk scores
+- Additional models (Random Forest, XGBoost) and ensemble methods
+- Model explainability with SHAP
+- Evaluation on an external dataset
+
+---
+
+## 👤 Author
+
+**Vijay Saroj**
+GitHub: [@vs2311](https://github.com/vs2311)
